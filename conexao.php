@@ -1,19 +1,12 @@
 <?php
-$hostname = 'localhost';
-$user = "root";
-$password = "";
-$database = "pizzaria";
+$conexao= new PDO ('mysql:host=localhost; dbname=pizzaria', "root", "");
 
-$conexao = mysqli_connect($hostname, $user, $password, $database);
+$select = $conexao -> prepare("SELECT * FROM pizzas");
 
-if (!$conexao){
-	print "falha na conexão com o banco de dados";
-}
+$select->execute();
 
+$fetch = $select->fetchAll();
+
+var_dump($fetch);
 ?>
-
-
-
-
-
 
